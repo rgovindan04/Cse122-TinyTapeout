@@ -39,17 +39,15 @@ VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
 # List test modules to run, separated by commas and without the .py suffix:
-COCOTB_TEST_MODULES = 
+#COCOTB_TEST_MODULES = 
 
 # include cocotb's make rules to take care of the simulator setup
-include $(shell cocotb-config --makefiles)/Makefile.sim
+#include $(shell cocotb-config --makefiles)/Makefile.sim
 
 # ----------------------------
 # Plain Verilog-only simulation (no cocotb)
 # ----------------------------
-.PHONY: sim verilog
+.PHONY: sim_verilog
 
-verilog: $(SIM_BUILD)/sim.vvp
+sim_verilog: $(SIM_BUILD)/sim.vvp
 	$(VVP) $< $(FST)
-
-sim: verilog

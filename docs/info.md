@@ -9,12 +9,24 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This project implements a small 4-bit Arithmetic Logic Unit (ALU) in Verilog. The ALU performs several arithmetic and logical operations on two 4-bit inputs.
+
+The inputs are two 4-bit numbers A and B, and a 3-bit operation code (op) that determines which operation the ALU performs. The result of the operation is a 4-bit output Y, along with a carry flag for arithmetic operations.
+
+The ALU is purely combinational, meaning the output updates immediately when the inputs change. No clock is required.
+
 
 ## How to test
 
-Explain how to use your project
+To test the ALU, apply values to the inputs A, B, and op, then observe the output Y.
 
+A Verilog testbench is included in the repository that automatically applies several test cases and verifies the correct outputs.
+
+To run the self-checking Verilog testbench:
+cd test
+make SIM=icarus sim_verilog
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+No external hardware is required for this project.
+
+The design is a simple combinational ALU that operates entirely on the TinyTapeout input and output pins.
