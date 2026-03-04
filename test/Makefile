@@ -45,9 +45,17 @@ TOPLEVEL = tb
 #include $(shell cocotb-config --makefiles)/Makefile.sim
 
 # ----------------------------
-# Plain Verilog-only simulation (no cocotb)
+# Verilog-only simulation (no cocotb)
 # ----------------------------
-.PHONY: sim_verilog
+.PHONY: sim_verilog clean_verilog
 
-sim_verilog: $(SIM_BUILD)/sim.vvp
-	$(VVP) $< $(FST)
+clean_verilog:
+	rm -rf sim_build tb.fst
+
+sim_verilog:
+	mkdir -p sim_build/rtl
+	iverilog -g2012 -o sim_build/rtl/sim.vvp \
+	  -I$(SRC_DIR) \
+	  $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) \
+	  $(PWD)/tb.v
+	vvp sim_build/rtl/sim.vvp $(FST)
