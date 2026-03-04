@@ -20,12 +20,12 @@ The ALU is purely combinational, meaning the output updates immediately when the
 
 To test the ALU, apply values to the inputs A, B, and op, then observe the output Y.
 
-A Verilog testbench is included in the repository that automatically applies several test cases and verifies the correct outputs.
+A cocotb testbench is included in the repository that automatically applies several test cases and verifies the correct outputs.
 
-To run the self-checking Verilog testbench:
+To run the cocotb testbench:
 cd test
-make clean_verilog
-make SIM=icarus sim_verilog
+make clean
+make SIM=icarus
 
 My testbench is suffecient enough because I exhaustivley test all possible outputs and compare it against a golden model.
 ## External hardware

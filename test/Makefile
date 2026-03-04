@@ -39,38 +39,7 @@ VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
 # List test modules to run, separated by commas and without the .py suffix:
-#COCOTB_TEST_MODULES = 
+COCOTB_TEST_MODULES = test
 
 # include cocotb's make rules to take care of the simulator setup
-#include $(shell cocotb-config --makefiles)/Makefile.sim
-
-# ----------------------------
-# Verilog-only simulation (no cocotb)
-# ----------------------------
-.PHONY: sim_verilog clean_verilog
-
-clean_verilog:
-	rm -rf sim_build tb.fst
-
-sim_verilog:
-	mkdir -p sim_build/rtl
-	iverilog -g2012 -o sim_build/rtl/sim.vvp \
-	  -I$(SRC_DIR) \
-	  $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES)) \
-	  $(PWD)/tb.v
-	vvp sim_build/rtl/sim.vvp $(FST)
-	$(MAKE) results.xml
-
-# GitHub Actions expects these targets/files
-.PHONY: clean
-
-clean: clean_verilog
-	@true
-
-# Create a dummy results.xml so the summary step doesn't error.
-# (If I switch back to cocotb, cocotb will generate a real one.)
-results.xml:
-	@echo '<?xml version="1.0" encoding="UTF-8"?>' > results.xml
-	@echo '<testsuite name="verilog_tb" tests="1" failures="0" errors="0" skipped="0">' >> results.xml
-	@echo '  <testcase classname="tb" name="sim_verilog"/>' >> results.xml
-	@echo '</testsuite>' >> results.xml
+include $(shell cocotb-config --makefiles)/Makefile.sim
