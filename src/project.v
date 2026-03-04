@@ -24,7 +24,7 @@ module tt_um_rishigovindan_alu (
   wire [3:0] y;
   wire       carry;
 
-  // Instantiate your ALU from src/alu.v
+  // Instantiate ALU from src/alu.v
   alu u_alu (
       .a(a),
       .b(b),
@@ -38,7 +38,7 @@ module tt_um_rishigovindan_alu (
   assign uo_out[4]   = carry;
   assign uo_out[7:5] = 3'b000;
 
-  // Keep all uio pins as inputs (we only read uio_in)
+  // Keep all uio pins as inputs (only read uio_in)
   assign uio_out = 8'b0000_0000;
   assign uio_oe  = 8'b0000_0000;
 
