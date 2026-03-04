@@ -26,8 +26,12 @@ To run the self-checking Verilog testbench:
 cd test
 make clean_verilog
 make SIM=icarus sim_verilog
+
+My testbench is suffecient enough because I exhaustivley test all possible outputs and compare it against a golden model.
 ## External hardware
 
 No external hardware is required for this project.
 
 The design is a simple combinational ALU that operates entirely on the TinyTapeout input and output pins.
+
+Used GenAI tools to help configure Makefile

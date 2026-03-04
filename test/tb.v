@@ -70,7 +70,7 @@ module tb ();
             $finish;
           end
 
-          // Check carry behavior (matches your ALU)
+          // Check carry behavior (matches ALU)
           if ((op == 3'b000) || (op == 3'b001)) begin
             if (carry !== exp[4]) begin
               $display("FAIL(C): op=%b a=%0d b=%0d got carry=%b exp carry=%b",
