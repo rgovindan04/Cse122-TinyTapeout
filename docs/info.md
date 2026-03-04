@@ -24,6 +24,7 @@ A Verilog testbench is included in the repository that automatically applies sev
 
 To run the self-checking Verilog testbench:
 cd test
+make clean_verilog
 make SIM=icarus sim_verilog
 ## External hardware
 
